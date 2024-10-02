@@ -1,9 +1,15 @@
+import Main from "./Components/Main";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+
 const App = () => {
-  return (
-    <div>
-      <h1 className="text-3xl text-blue-500">Hello World</h1>
-    </div>
-  )
+    return (
+        <>
+            <Header />
+            <Main />
+            <Footer />
+        </>
+    )
 }
 
 export default App;
