@@ -24,7 +24,13 @@ const productsRaw = [
     }
 ]
 
+
 const Main = () => {
+    const product = productsRaw.map((product) => {
+        return (
+            <ProductCard key={product.id} img={product.img} title={product.title} price={product.price} stock={product.stock} />
+        )
+    })
     return (
         <main className="min-h-[80vh] max-w-screen-md mx-auto px-4 mt-8">
             <div className="pb-20 mx-auto text-center flex flex-col items-center max-w-3xl">
@@ -32,8 +38,7 @@ const Main = () => {
                 <p className="mt-6 text-lg max-w-prose text-muted-foreground">online-markket provides you with the finest clothings and ensures your confidence throughout your days</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-                {/* Maping Card */}
-                {productsRaw.map((product) => <ProductCard key={product.id} img={product.img} title={product.title} price={product.price} stock={product.stock} />)}
+                {product}
             </div>
         </main>
     )
