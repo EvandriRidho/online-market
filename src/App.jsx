@@ -1,4 +1,4 @@
-import Main from "./Components/Main";
+import Card from "./Components/Card";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 
@@ -6,7 +6,7 @@ const App = () => {
     return (
         <>
             <Header />
-            <Main />
+            <Card />
             <Footer />
         </>
     )

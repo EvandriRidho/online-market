@@ -13,19 +13,19 @@ const productsRaw = [
         img: "./../../public/img/adidas-shoes.jpeg",
         title: "Adidas Shoes",
         price: 800000,
-        stock: 5
+        stock: 0
     },
     {
         id: 3,
         img: "./../../public/img/puma-shoes.jpeg",
         title: "Puma Shoes",
         price: 700000,
-        stock: 10
+        stock: 5
     }
 ]
 
 
-const Main = () => {
+const Card = () => {
     const product = productsRaw.map((product) => {
         return (
             <ProductCard key={product.id} img={product.img} title={product.title} price={product.price} stock={product.stock} />
@@ -44,4 +44,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default Card

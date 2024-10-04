@@ -25,8 +25,6 @@ const Header = () => {
                     <Button>Login</Button>
                     <Button variant="outline">Sign Up</Button>
                 </div>
-
-
             </div>
         </header>
     )

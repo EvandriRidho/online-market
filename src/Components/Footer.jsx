@@ -2,7 +2,7 @@ import ContactMeButton from "./ContactMeButton";
 
 const Footer = () => {
     return (
-        <footer className="h-16 border-t flex justify-between items-center px-20 py-8">
+        <footer className="h-16 border-t flex justify-between items-center px-20 py-8 mt-20">
             <h1 className="text-xl font-semibold">online-market Copyright 2024</h1>
             <ContactMeButton>Contact Me!</ContactMeButton>
         </footer>
