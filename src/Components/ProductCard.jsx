@@ -5,7 +5,7 @@ import { useState } from "react";
 const ProductCard = (props) => {
     const { img, title, price, stock } = props
     const addToCart = () => {
-
+        alert("Product added to cart")
     }
 
     const [qty, setQty] = useState(0)
