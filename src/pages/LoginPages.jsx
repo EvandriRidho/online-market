@@ -1,3 +1,4 @@
+// Import React
 import { Button } from "@/Components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/Components/ui/card";
 import { Checkbox } from "@/Components/ui/checkbox";
@@ -10,12 +11,14 @@ import { Form, FormField, FormItem, FormLabel, FormMessage, FormControl } from "
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 
+// Zod Schema
 const loginFormSchema = z.object({
     username: z.string().min(3, "Usename must be at least 3 characters").max(16, "Username must be at most 16 characters"),
     password: z.string().min(8, "Password must be at least 8 characters"),
 })
 
 const LoginPage = () => {
+    // React Hook Form
     const form = useForm({
         defaultValues: {
             username: "",
@@ -24,7 +27,9 @@ const LoginPage = () => {
         resolver: zodResolver(loginFormSchema),
         reValidateMode: "onSubmit",
     })
+    // State
     const [isChecked, setIsChecked] = useState(false);
+    // Handlers Login
     const handleLogin = (values) => {
         alert(`Login with ${values.username} and ${values.password}`)
     }
