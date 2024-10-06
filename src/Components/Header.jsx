@@ -28,8 +28,12 @@ const Header = () => {
                 </div>
                 <Separator orientation="vertical" />
                 <div className="flex space-x-2">
-                    <Button>Login</Button>
-                    <Button variant="outline">Sign Up</Button>
+                    <Link to={"/login"}>
+                        <Button>Login</Button>
+                    </Link>
+                    <Link to={"/signup"}>
+                        <Button variant="outline">Sign Up</Button>
+                    </Link>
                 </div>
             </div>
         </header>

@@ -12,6 +12,10 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+		  maxWidth: {
+			  '3xl': '1920px',
+			  '4xl': '2560px'
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
