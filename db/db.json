@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "img": "../public/img/nike-shoes.jpeg",
+      "title": "Nike Shoes",
+      "price": 1500000,
+      "stock": 3
+    },
+    {
+      "id": 2,
+      "img": "../public/img/adidas-shoes.jpeg",
+      "title": "Adidas Shoes",
+      "price": 1200000,
+      "stock": 0
+    },
+    {
+      "id": 3,
+      "img": "../public/img/puma-shoes.jpeg",
+      "title": "Puma Shoes",
+      "price": 700000,
+      "stock": 5
+    },
+    {
+      "id": 4,
+      "img": "../public/img/Converse-Shoes.jpeg",
+      "title": "Converse Shoes",
+      "price": 400000,
+      "stock": 2
+    }
+  ]
+}

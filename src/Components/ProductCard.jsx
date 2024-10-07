@@ -1,14 +1,15 @@
 import { Button } from "./ui/button";
 import { IoIosAdd, IoIosRemove } from "react-icons/io"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProductCard = (props) => {
     const { img, title, price, stock } = props
+
+    const [qty, setQty] = useState(0)
+
     const addToCart = () => {
         alert("Product added to cart")
     }
-
-    const [qty, setQty] = useState(0)
 
     const qtyIncrement = () => {
         if (qty < stock) {
