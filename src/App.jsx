@@ -5,7 +5,7 @@ import Header from "./Components/Header"
 import Footer from "./Components/Footer";
 import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/LoginPages";
-import SignUpPage from "./pages/SignUpPages";
+import ProductDetailCard from "./pages/ProductDetailCard";
 const App = () => {
     return (
         <>
@@ -14,7 +14,7 @@ const App = () => {
                 <Route path="/" Component={HomePage} />
                 <Route path="/cart" Component={CartPage} />
                 <Route path="/login" Component={LoginPage} />
-                <Route path="/signup" Component={SignUpPage} />
+                <Route path="/product/:productId" Component={ProductDetailCard} />
                 <Route path="*" Component={NotFoundPage} />
             </Routes>
             <Footer />

@@ -1,15 +1,12 @@
 import { Button } from "./ui/button";
 import { IoIosAdd, IoIosRemove } from "react-icons/io"
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = (props) => {
-    const { img, title, price, stock } = props
+    const { img, title, price, stock, id } = props
 
     const [qty, setQty] = useState(0)
-
-    const addToCart = () => {
-        alert("Product added to cart")
-    }
 
     const qtyIncrement = () => {
         if (qty < stock) {
@@ -25,15 +22,15 @@ const ProductCard = (props) => {
 
     return (
         <div className="p-4 border rounded-md md:max-w-96 flex flex-col gap-4">
-            <div className="aspect-square w-full overflow-hidden">
+            <Link to={"./product/" + id} className="aspect-square w-full overflow-hidden">
                 <img src={img} className="w-full" />
-            </div>
+            </Link>
 
-            <div >
+            <Link to={"./product/" + id}>
                 <p className="text-md">{title}</p>
                 <p className="text-xl font-semibold">Rp {price.toLocaleString("id-ID")}</p>
                 <p className="text-muted-foreground">In Stock : {stock}</p>
-            </div>
+            </Link>
 
             <div className="flex flex-col gap-2">
                 {/* Button Quantity */}

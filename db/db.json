@@ -11,21 +11,77 @@
       "id": 2,
       "img": "../public/img/adidas-shoes.jpeg",
       "title": "Adidas Shoes",
-      "price": 1200000,
+      "price": 1250000,
       "stock": 0
     },
     {
       "id": 3,
       "img": "../public/img/puma-shoes.jpeg",
       "title": "Puma Shoes",
-      "price": 700000,
+      "price": 1000000,
       "stock": 5
     },
     {
       "id": 4,
       "img": "../public/img/Converse-Shoes.jpeg",
       "title": "Converse Shoes",
-      "price": 400000,
+      "price": 430000,
+      "stock": 2
+    },
+    {
+      "id": 5,
+      "img": "../public/img/vans-shoes.jpeg",
+      "title": "Vans Shoes",
+      "price": 500000,
+      "stock": 1
+    },
+    {
+      "id": 6,
+      "img": "../public/img/newbalance-shoes.jpeg",
+      "title": "New Balance Shoes",
+      "price": 670000,
+      "stock": 4
+    },
+    {
+      "id": 7,
+      "img": "../public/img/wordDivision-shoes.jpg",
+      "title": "World Division Shoes",
+      "price": 740000,
+      "stock": 0
+    },
+    {
+      "id": 8,
+      "img": "../public/img/saints-barkley-shoes.jpg",
+      "title": "Saints Barkley Shoes",
+      "price": 850000,
+      "stock": 9
+    },
+    {
+      "id": 9,
+      "img": "../public/img/fyc-shoes.jpg",
+      "title": "FYC Shoes",
+      "price": 350000,
+      "stock": 5
+    },
+    {
+      "id": 10,
+      "img": "../public/img/brodo-shoes.jpg",
+      "title": "Brodo Shoes",
+      "price": 280000,
+      "stock": 6
+    },
+    {
+      "id": 11,
+      "img": "../public/img/nahProject-shoes.jpg",
+      "title": "Nah Project Shoes",
+      "price": 430000,
+      "stock": 0
+    },
+    {
+      "id": 12,
+      "img": "../public/img/vantela-shoes.jpg",
+      "title": "Vantela Shoes",
+      "price": 570000,
       "stock": 2
     }
   ]

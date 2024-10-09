@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
-        <header className="h-16 border-b flex justify-between items-center px-8">
+        <header className="h-16 border-b flex justify-between items-center px-8 sticky top-0 z-50 bg-white">
             {/* BRAND */}
             <Link to={"/"}>
                 <p className="text-2xl font-semibold">online-market</p>

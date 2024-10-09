@@ -1,7 +1,7 @@
 import { axiosInstance } from "@/lib/axios"
 import ProductCard from "./ProductCard"
 import { useEffect, useState } from "react"
-
+import { Skeleton } from "./ui/skeleton"
 
 const Main = () => {
     const [products, setProducts] = useState([])
@@ -19,7 +19,9 @@ const Main = () => {
     }
 
     const productList = products.map((product) => {
-        return <ProductCard key={product.id} img={product.img} title={product.title} price={product.price} stock={product.stock} />
+        return (
+            <ProductCard id={product.id} img={product.img} title={product.title} price={product.price} stock={product.stock} />
+        )
     })
 
     // Fetch products on component mount
@@ -33,7 +35,12 @@ const Main = () => {
                 <h1 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">Become a trend-setter with us</h1>
                 <p className="mt-6 text-lg max-w-prose text-muted-foreground">online-markket provides you with the finest clothings and ensures your confidence throughout your days</p>
             </div>
-            {productsIsLoading ? <p>Loading...</p> : <div className="grid grid-cols-2 gap-4">
+            {productsIsLoading ? <div className="grid grid-cols-2 gap-4">
+                <Skeleton className={"w-[360px] h-[556px]"} />
+                <Skeleton className={"w-[360px] h-[556px]"} />
+                <Skeleton className={"w-[360px] h-[556px]"} />
+                <Skeleton className={"w-[360px] h-[556px]"} />
+            </div> : <div className="grid grid-cols-2 gap-4">
                 {productList}
             </div>}
         </main>
