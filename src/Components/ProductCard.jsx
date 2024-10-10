@@ -3,9 +3,7 @@ import { IoIosAdd, IoIosRemove } from "react-icons/io"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ProductCard = (props) => {
-    const { img, title, price, stock, id } = props
-
+const ProductCard = ({ img, title, price, stock, id }) => {
     const [qty, setQty] = useState(0)
 
     const qtyIncrement = () => {

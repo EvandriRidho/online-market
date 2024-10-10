@@ -5,10 +5,10 @@ import { Skeleton } from "./ui/skeleton"
 
 const Main = () => {
     const [products, setProducts] = useState([])
-    const [productsIsLoading, setProductsIsLoading] = useState(false)
-    const fetchProducts = async () => {
-        setProductsIsLoading(true)
+    const [productsIsLoading, setProductsIsLoading] = useState(true)
+    const fetchProducts = async () => {       
         try {
+            setProductsIsLoading(true)
             const response = await axiosInstance.get("/products")
             setProducts(response.data)
         } catch (error) {

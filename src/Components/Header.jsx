@@ -31,9 +31,7 @@ const Header = () => {
                     <Link to={"/login"}>
                         <Button>Login</Button>
                     </Link>
-                    <Link to={"/signup"}>
-                        <Button variant="outline">Sign Up</Button>
-                    </Link>
+                    <Button variant="outline">Sign Up</Button>
                 </div>
             </div>
         </header>
