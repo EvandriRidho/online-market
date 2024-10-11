@@ -8,11 +8,11 @@ import { Skeleton } from "@/Components/ui/skeleton"
 
 
 const ProductDetailCard = () => {
-    const { productId } = useParams()
+    const params = useParams()
     const fetchProduct = async () => {
         try {
             setProductIsLoading(true)
-            const response = await axiosInstance.get("/products/" + productId)
+            const response = await axiosInstance.get("/products/" + params.productId)
             setProduct(response.data)
         } catch (error) {
             console.log(error)
@@ -32,7 +32,7 @@ const ProductDetailCard = () => {
 
     useEffect(() => {
         fetchProduct()
-    }, [])
+    }, [params.productId])
 
     return (
         <main className="min-h-screen max-w-screen-lg mx-auto px-4 mt-8">

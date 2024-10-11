@@ -9,7 +9,7 @@ const SidebarItem = ({ children }) => {
     )
 }
 
-const adminLayout = ({ title, desc, rightSection, children }) => {
+const AdminLayout = ({ title, desc, rightSection, children }) => {
     return (
         <div className="flex ">
             <aside className="w-72 border-r h-screen">
@@ -49,4 +49,4 @@ const adminLayout = ({ title, desc, rightSection, children }) => {
     )
 }
 
-export default adminLayout;
+export default AdminLayout;

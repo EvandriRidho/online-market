@@ -1,17 +1,20 @@
 import AdminLayout from "../../Components/Layout/AdminLayout";
 import { Button } from "@/Components/ui/button";
 import { Table, TableHead, TableHeader, TableRow, TableBody, TableCell } from "@/Components/ui/table";
-import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
+import { ChevronLeft, ChevronRight, Edit } from "lucide-react";
 import { IoAdd } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "@/lib/axios";
 import { Pagination, PaginationContent, PaginationItem } from "@/Components/ui/pagination";
-import { useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
+import { Label } from "@/Components/ui/label";
+import { Input } from "@/Components/ui/input";
 
 const ProductManagementPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [products, setProducts] = useState([])
     const [hasNextPage, setHasNextPage] = useState(true)
+    const [productName, setProductName] = useState("")
 
 
     const handleNextPage = () => {
@@ -22,12 +25,23 @@ const ProductManagementPage = () => {
         searchParams.set("page", Number(searchParams.get("page")) - 1)
         setSearchParams(searchParams)
     }
+    const handleSearchBTN = () => {
+        if (productName) {
+            searchParams.set("search", productName)
+            setSearchParams(searchParams)
+        } else {
+            searchParams.delete("search")
+            setSearchParams(searchParams)
+        }
+    }
+
     const fetchProducts = async () => {
         try {
             const response = await axiosInstance.get("/products", {
                 params: {
                     _per_page: 5,
                     _page: Number(searchParams.get("page")),
+                    title: searchParams.get("search"),
                 }
             })
             console.log(response.data)
@@ -43,7 +57,7 @@ const ProductManagementPage = () => {
         if (searchParams.get("page")) {
             fetchProducts()
         }
-    }, [searchParams.get("page")])
+    }, [searchParams.get("page"), searchParams.get("search")])
     // Set default page to 1 if not set
     useEffect(() => {
         if (!searchParams.get("page")) {
@@ -56,9 +70,19 @@ const ProductManagementPage = () => {
         <AdminLayout
             title="Product Management"
             desc={"Manage your products here"}
-            rightSection={<Button ><IoAdd className="h-6 w-6 mr-2" />Add Product</Button>}
+            rightSection={<Link to="/admin/products/create"><Button ><IoAdd className="h-6 w-6 mr-2" />Add Product</Button></Link>}
         >
-            <Table className="p-4 border rounded-md">
+            <div className="mb-8">
+                <Label>Search Product Name</Label>
+                <div className="flex gap-4">
+                    <Input className="max-w-[400px]"
+                        onChange={(e) => setProductName(e.target.value)}
+                        value={productName}
+                        placeholder="Search Product....." />
+                    <Button onClick={handleSearchBTN}>Search Product</Button>
+                </div>
+            </div>
+            <Table className="p-4 border rounded-md table-fixed">
                 <TableHeader>
                     <TableRow>
                         <TableHead>ID</TableHead>
@@ -76,16 +100,18 @@ const ProductManagementPage = () => {
                             <TableCell>Rp. {product.price.toLocaleString("id-ID")}</TableCell>
                             <TableCell>{product.stock}</TableCell>
                             <TableCell>
-                                <Button variant="ghost" size="icon">
-                                    <Ellipsis className="h-6 w-6" />
-                                </Button>
+                                <Link to={"/admin/products/edit/" + product.id} >
+                                    <Button variant="ghost" size="icon">
+                                        <Edit className="h-6 w-6" />
+                                    </Button>
+                                </Link>
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
 
-            <Pagination className="mt-8 ">
+            <Pagination className="mt-8">
                 <PaginationContent>
                     <PaginationItem>
                         <Button variant="ghost" onClick={handlePreviousPage} disabled={searchParams.get("page") == 1} >

@@ -18,6 +18,10 @@ const ProductCard = ({ img, title, price, stock, id }) => {
         }
     }
 
+    const addToCart = () => {
+        alert("Product added to cart")
+    }
+
     return (
         <div className="p-4 border rounded-md md:max-w-96 flex flex-col gap-4">
             <Link to={"./product/" + id} className="aspect-square w-full overflow-hidden">
