@@ -1,7 +1,7 @@
 import AdminLayout from "../../Components/Layout/AdminLayout";
 import { Button } from "@/Components/ui/button";
 import { Table, TableHead, TableHeader, TableRow, TableBody, TableCell } from "@/Components/ui/table";
-import { ChevronLeft, ChevronRight, Edit } from "lucide-react";
+import { ChevronLeft, ChevronRight, Edit, Trash } from "lucide-react";
 import { IoAdd } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "@/lib/axios";
@@ -9,6 +9,7 @@ import { Pagination, PaginationContent, PaginationItem } from "@/Components/ui/p
 import { Link, useSearchParams } from "react-router-dom"
 import { Label } from "@/Components/ui/label";
 import { Input } from "@/Components/ui/input";
+import { Checkbox } from "@/Components/ui/checkbox";
 
 const ProductManagementPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -32,6 +33,18 @@ const ProductManagementPage = () => {
         } else {
             searchParams.delete("search")
             setSearchParams(searchParams)
+        }
+    }
+
+    const handleDeleteProduct = async (productId) => {
+        const shouldDelete = confirm("Are you sure you want to delete this product?")
+        if (!shouldDelete) return;
+        try {
+            axiosInstance.delete("/products/" + productId)
+            alert("Product deleted successfully")
+            fetchProducts()
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -64,7 +77,7 @@ const ProductManagementPage = () => {
             searchParams.set("page", 1)
             setSearchParams(searchParams)
         }
-    })
+    }, [])
 
     return (
         <AdminLayout
@@ -85,6 +98,7 @@ const ProductManagementPage = () => {
             <Table className="p-4 border rounded-md table-fixed">
                 <TableHeader>
                     <TableRow>
+                        <TableHead></TableHead>
                         <TableHead>ID</TableHead>
                         <TableHead>Product Name</TableHead>
                         <TableHead>Price</TableHead>
@@ -95,16 +109,24 @@ const ProductManagementPage = () => {
                 <TableBody>
                     {products.map((product) => (
                         <TableRow>
+                            <TableCell>
+                                <Checkbox />
+                            </TableCell>
                             <TableCell>{product.id}</TableCell>
                             <TableCell>{product.title}</TableCell>
                             <TableCell>Rp. {product.price.toLocaleString("id-ID")}</TableCell>
                             <TableCell>{product.stock}</TableCell>
                             <TableCell>
-                                <Link to={"/admin/products/edit/" + product.id} >
-                                    <Button variant="ghost" size="icon">
-                                        <Edit className="h-6 w-6" />
+                                <div className="flex gap-4">
+                                    <Link to={"/admin/products/edit/" + product.id} >
+                                        <Button variant="ghost" size="icon">
+                                            <Edit className="h-6 w-6" />
+                                        </Button>
+                                    </Link>
+                                    <Button variant="destructive" size="icon" onClick={() => handleDeleteProduct(product.id)}>
+                                        <Trash className="h-6 w-6" />
                                     </Button>
-                                </Link>
+                                </div>
                             </TableCell>
                         </TableRow>
                     ))}
